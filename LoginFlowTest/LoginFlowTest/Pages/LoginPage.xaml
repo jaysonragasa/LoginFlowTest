@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LoginFlowTest.Pages.LoginPage"
+             
+             xmlns:jio="clr-namespace:Jara.Xaml.Control.Extension;assembly=Jara.Xaml.ControlExtensions.Xamarin"
+             xmlns:vm="clr-namespace:LoginFlowTest.ViewModels"
+             Shell.NavBarIsVisible="False"
+             Shell.FlyoutBehavior="Disabled"
+             Shell.FlyoutItemIsVisible="False"
+             Visual="Material"
+             >
+
+    <ContentPage.BindingContext>
+        <vm:ViewModel_Login />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <Grid jio:GridEx.RowDefinitions="* ~">
+            <Grid>
+                <Label Text="[ Your company logo here ]" FontSize="25" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <StackLayout Margin="20,0,20,30">
+                    <Entry Placeholder="Email" Keyboard="Email" />
+                    <Entry Placeholder="Password" IsPassword="True" />
+
+                    <Button Text="Login" Margin="0,20,0,0" Command="{Binding Command_Login}" />
+
+                    <Grid HorizontalOptions="Center" Margin="0,20,0,0" >
+                        <Label Text="Register" HorizontalOptions="Center" Margin="10,10" />
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Command_Register}" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

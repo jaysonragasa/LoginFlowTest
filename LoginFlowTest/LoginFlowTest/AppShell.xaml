@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="LoginFlowTest.AppShell"
+       xmlns:local="clr-namespace:LoginFlowTest"
+       xmlns:localPages="clr-namespace:LoginFlowTest.Pages"
+       xmlns:vm="clr-namespace:LoginFlowTest.ViewModels"
+       >
+
+    <Shell.BindingContext>
+        <!--We'll use ViewModel_Logout for the mea time.
+        We could've use ViewModelLocator and call any ViewModels we want here but for simplification
+        I did not use MVVMLight Framework-->
+        
+        <vm:ViewModel_Logout />
+    </Shell.BindingContext>
+
+    <ShellItem>
+        <ShellContent Title="Login" 
+                      Route="LoginPage" 
+                      ContentTemplate="{DataTemplate localPages:LoginPage}" 
+                      FlyoutItemIsVisible="False" 
+                      />
+    </ShellItem>
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent Title="Main" Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
+    </FlyoutItem>
+
+    <MenuItem Text="Logout" Command="{Binding Command_Logout}" />
+</Shell>
